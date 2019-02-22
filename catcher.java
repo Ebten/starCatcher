@@ -12,7 +12,7 @@ class catcher extends JComponent implements Runnable, KeyListener{
             boolean moveLeft = false, moveRight = false;
             Rectangle2D.Float r = new Rectangle2D.Float();
             int starsCaught = 0;
-            JLabel score = new JLabel("|" + starsCaught + "|");
+            JLabel score = new JLabel("" + starsCaught);
             Font f = new Font("Verdana",Font.BOLD,16);
             star s = new star();
             catcher(){
@@ -74,13 +74,13 @@ class catcher extends JComponent implements Runnable, KeyListener{
                                     if(x == s.x && y == s.y){
                                                 s.backToSky();
                                                 starsCaught++;
-                                                score.setText("|" + starsCaught + "|");
+                                                score.setText("" + starsCaught);
                                                 y-=sisp;
                                                 threadTime-=2;
                                     }
                                     if(s.y == (y + sisp)){
                                                 hold = false;
-                                                score.setText("The star was not caught, the earth is shattered! Press ENTER to start again.");
+                                                score.setText("Your final score was " + score.getText() + ". Press ENTER to start again.");
                                     }
                                     repaint();
                                     try{t.sleep(threadTime);}catch(Exception e){}
